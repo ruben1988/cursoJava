@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="es.caixa.Usuario" table="TBL_USUARIO">
+
+        <id name="id" type="java.lang.Integer" column="ID">
+            <generator class="identity" />
+        </id>
+
+        <property name="nombre" column="NOMBRE"/>
+        <property name="apellidos" column="APELLIDOS"/>
+        <property name="email" column="EMAIL" unique="true" length="100"/>
+        <property name="edad" column="EDAD"/>
+
+    </class>
+</hibernate-mapping>

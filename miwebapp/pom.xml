@@ -32,7 +32,7 @@
           <artifactId>tomcat7-maven-plugin</artifactId>
           <version>2.2</version>
           <configuration>
-              <url>http://localhost:8080/manager/text</url>
+              <url>http://localhost:8080/manager/text</url><!--Ponertomcat(nombre del contenedor cuando se trabaje con jenkins-->
               <server>mitomcat</server>
               <path>/miwebapp</path>
           </configuration>

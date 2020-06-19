@@ -10,8 +10,8 @@ services:
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         container_name: phpmyadmin
-        ports:
-          - 8081:80
+        #ports:
+        #  - 8081:80
         environment:
           MYSQL_USERNAME: root
           MYSQL_ROOT_PASSWORD: password
@@ -24,10 +24,10 @@ services:
           - TOMCAT_PASSWORD=password
           - TOMCAT_ALLOW_REMOTE_MANAGEMENT=1
         ports:
-         - 8080:8080
+          - 8080:8080
         volumes:
-         - ./tomcat-users.xml:/opt/bitnami/tomcat/conf/tomcat-users.xml
-         - ./context.xml:/opt/bitnami/tomcat/conf/context.xml
+          - ./tomcat-users.xml:/opt/bitnami/tomcat/conf/tomcat-users.xml
+          - ./context.xml:/opt/bitnami/tomcat/conf/context.xml
          
     jenkins:
         image: jenkins/jenkins:lts
@@ -36,6 +36,23 @@ services:
             - /home/ubuntu/environment/jenkins_home:/var/jenkins_home 
         ports: 
            - 8082:8080
+    liberty:
+        image: websphere-liberty:webProfile8
+        ports:
+            - 8081:9080
+        volumes:
+            - /home/ubuntu/environment/liberty_home:/config/dropins
+            - /home/ubuntu/environment/curso/infraestructura/mariadb-java-client-2.6.0.jar:/config/mariadb-java-client-2.6.0.jar
+            - /home/ubuntu/environment/curso/infraestructura/server.xml:/config/server.xml
+        container_name: liberty
+    #postgres:
+    #    container_name: postgres
+    #    image: postgres
+    #    environment:
+    #      POSTGRES_PASSWORD: password
+    #      POSTGRES_USER: curso
+    #      POSTGRES_DB: usuarios
+
 
 
 
